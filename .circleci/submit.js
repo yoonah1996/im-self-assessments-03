@@ -11,7 +11,7 @@ let studentsArray = students.split(",");
 console.log(theClass, studentsArray, sprint);
 
 exec(
-  'npm test | grep -E "[0-9]+\\s(passing|failing)"',
+  'npm run test | grep -E "[0-9]+\\s(passing|failing)"',
   (err, stdout1, stderr) => {
     if (err) {
       return;
