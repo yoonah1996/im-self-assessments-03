@@ -11,7 +11,7 @@ let studentsArray = students.split(",");
 console.log(theClass, studentsArray, sprint);
 
 exec(
-  'npm run test-for-circleci | grep -E "[0-9]+\\s(passing|failing)"',
+  'npm test | grep -E "[0-9]+\\s(passing|failing)"',
   (err, stdout1, stderr) => {
     if (err) {
       return;
