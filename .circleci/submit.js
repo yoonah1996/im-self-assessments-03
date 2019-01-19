@@ -14,7 +14,8 @@ exec(
   'npm run test | grep -E "[0-9]+\\s(passing|failing)"',
   (err, stdout1, stderr) => {
     if (err) {
-      return;
+      console.log(err)
+      throw new Error('Regex can not take a result from the test on submit.js')
     }
 
     // Get test result from the console and cleasing it for spread sheet
@@ -44,7 +45,8 @@ exec(
         });
 
         req.on("error", e => {
-          console.log("error");
+          console.log(e)
+          throw new Error('Students data was not sent to airtable properly.')
           // callback(new Error('failure'));
         });
         // send the request
