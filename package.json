@@ -10,9 +10,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cross-env CI=true react-scripts test",
     "eject": "react-scripts eject",
-    "test:circleci": "cross-env CI=true react-scripts test --json --outputFile=.circleci/results.json"
+    "test": "cross-env CI=true react-scripts test --json --outputFile=results.json",
+    "pre-test": "node __test__/preTest.js",
+    "check": "node .airci/submit.js",
+    "submit": "npm-run-all -s --silent pre-test check"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -24,8 +26,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "colors": "^1.4.0",
     "cross-env": "^5.2.0",
     "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.7.1"
+    "enzyme-adapter-react-16": "^1.7.1",
+    "npm-run-all": "^4.1.5"
   }
 }
